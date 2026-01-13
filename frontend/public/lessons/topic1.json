@@ -1,0 +1,51 @@
+[
+    {
+        "name":"topic",
+        "ref":"0"
+    },
+
+    {
+        "name":"chào",
+        "ref": "lessons/topic_1_ref/chao.mp4"
+    },
+
+    {
+        "name":"gặp",
+        "ref": "lessons/topic_1_ref/gap.mp4"
+    },
+
+    {
+        "name": "hẹn gặp lại",
+        "ref": "lessons/topic_1_ref/hengaplai.mp4"
+    },
+
+    {
+        "name": "sống",
+        "ref": "lessons/topic_1_ref/song.mp4"
+    },
+
+    {
+        "name": "tạm biệt",
+        "ref": "lessons/topic_1_ref/tambiet.mp4"
+    },
+
+    {
+        "name": "tên",
+        "ref": "lessons/topic_1_ref/ten.mp4"
+    },
+
+    {
+        "name": "tuổi",
+        "ref": "lessons/topic_1_ref/tuoi.mp4"
+    },
+
+    {
+        "name": "rất vui được gặp bạn",
+        "ref": "lessons/topic_1_ref/vuigapban.mp4"
+    },
+
+    {
+        "name": "xin lỗi",
+        "ref": "lessons/topic_1_ref/xinloi.mp4"
+    }
+]

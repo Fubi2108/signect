@@ -1,0 +1,41 @@
+[
+    {
+        "name":"topic",
+        "ref":"1"
+    },
+
+    {
+        "name":"ăn",
+        "ref": "lessons/topic_3_ref/an.mp4"
+    },
+
+    {
+        "name":"bánh mì",
+        "ref": "lessons/topic_3_ref/banhmi.mp4"
+    },
+
+    {
+        "name": "khát nước",
+        "ref": "lessons/topic_3_ref/khat.mp4"
+    },
+
+    {
+        "name": "nước",
+        "ref": "lessons/topic_3_ref/nuoc.mp4"
+    },
+
+    {
+        "name": "súp",
+        "ref": "lessons/topic_3_ref/sup.mp4"
+    },
+
+    {
+        "name": "trà",
+        "ref": "lessons/topic_3_ref/tra.mp4"
+    },
+
+    {
+        "name": "uống",
+        "ref": "lessons/topic_3_ref/uong.mp4"
+    }
+]
