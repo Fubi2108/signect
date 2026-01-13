@@ -1,0 +1,689 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #FFE6BA;
+  font-family: 'Lexend', sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 75%;
+  top: 2vw;
+  left: 2vw;
+  position: absolute;
+  z-index: 1;
+}
+
+.menu-btn {
+  background: none;
+  /* background-color: rgba(0, 0, 0, 0.1); */
+  padding: 10px 20px;
+  border: none;
+  color: #211C46;
+  padding: 0;
+  top: 0;
+  font-size: 1.5vw;
+  font-family: 'Lexend', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  flex-grow: 1;
+  margin: 10px 0;
+  text-decoration: none;
+  width: auto;
+  white-space: nowrap;
+}
+
+.menu-btn:hover {
+  color: #FF97A4;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.background {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url(myweb.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top;
+  z-index: -2;
+  /*  padding-top: 44%;*/
+}
+
+
+/* Liquid Glass Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  backdrop-filter: blur(5px);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.6);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+.search {
+  --padding: 14px;
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  padding: var(--padding);
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.search:hover {
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.search-input {
+  font-size: 16px;
+  font-family: "Lexend", sans-serif;
+  color: #211C46;
+  font-weight: 500;
+  margin-left: 14px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: rgba(33, 28, 70, 0.6);
+}
+
+/* Removed duplicated search-container styles */
+
+.menu-container {
+  position: absolute;
+  top: calc(5vw + 20px);
+  left: 2vw;
+}
+
+.divider-container {
+  position: absolute;
+  top: calc(20vh + 20px);
+  left: 20vw;
+}
+
+
+.small3-button {
+  position: absolute;
+  top: 5.5vh;
+  left: 22vw;
+  z-index: 2;
+}
+
+.small4-button {
+  position: absolute;
+  top: 5.5vh;
+  left: 38vw;
+  z-index: 2;
+}
+
+.small-but {
+  width: 14vw;
+  height: auto;
+  cursor: pointer;
+}
+
+.small-but:hover {
+  transform: scale(1.05);
+}
+
+.alphabet {
+  position: absolute;
+  top: 30vh;
+  left: 23vw;
+  width: 100%;
+  height: 100vh;
+  z-index: -2;
+}
+
+.alphabet-image {
+  width: 60%;
+  height: auto;
+  /* Đảm bảo hình ảnh giữ nguyên tỷ lệ */
+}
+
+
+.logo {
+  position: absolute;
+  top: calc(3vh + 20px);
+  left: 2vw;
+  width: 100%;
+  height: 100vh;
+  z-index: -2;
+}
+
+.logo-image {
+  position: absolute;
+  top: 1vh;
+  left: 2vw;
+  width: 15vw;
+  max-width: 180px;
+  height: auto;
+  z-index: 101;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 1.5vw;
+  font-family: 'Lexend', sans-serif;
+  color: #211C46;
+  z-index: 2;
+}
+
+.center-button1 {
+  position: absolute;
+  top: 15vw;
+  left: 25vw;
+  z-index: 2;
+}
+
+.center-button2 {
+  position: absolute;
+  top: 22vw;
+  left: 25vw;
+  z-index: 2;
+}
+
+.center-button3 {
+  position: absolute;
+  top: 29vw;
+  left: 26.75vw;
+  z-index: 2;
+}
+
+.center-button4 {
+  position: absolute;
+  top: 36vw;
+  left: 25vw;
+  z-index: 2;
+}
+
+.image-btn {
+  width: 50vw;
+  height: auto;
+  cursor: pointer;
+}
+
+.image-btn:hover {
+  transform: scale(1.08);
+  /* Phóng to lên 120% khi hover */
+}
+
+.search-container {
+  position: absolute;
+  top: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50vw;
+  max-width: 90%;
+  z-index: 20;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 5px 15px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Optional: subtle shadow */
+}
+
+.search-icon {
+  margin-right: 10px;
+  color: #aaa;
+  /* Optional: color of the search icon */
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+}
+
+.suggestions {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  /* Matches the search bar border */
+  border-radius: 8px;
+  /* Rounded corners for the suggestions box */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for pop-up effect */
+  width: 100%;
+  /* Aligns the suggestion box width to the search bar */
+  max-height: 200px;
+  /* Optional: limit height and make it scrollable */
+  overflow-y: auto;
+  /* Adds a scrollbar if there are too many suggestions */
+  background-color: white;
+  /* Matches the background of the search bar */
+  position: absolute;
+  /* Ensures it appears below the search bar */
+  z-index: 10;
+  /* Make sure it stays above other content */
+}
+
+.suggestions li {
+  padding: 10px;
+  margin: 0;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+.suggestions li:last-child {
+  border-bottom: none;
+  /* Removes the border from the last item */
+}
+
+#res_list li {
+  padding: 10px;
+  /* Space inside each list item */
+  cursor: pointer;
+  /* Change cursor to pointer to indicate it's clickable */
+  transition: background-color 0.2s;
+  /* Smooth transitions for hover effects */
+}
+
+#res_list li:hover {
+  background-color: #cbe4f4;
+  /* Change background color on hover */
+}
+
+.dropdown {
+  display: none;
+  /* Initially hidden */
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  /* Ensure it stays above other content */
+  width: 100%;
+  /* Match the button width */
+}
+
+.dropdown .suggestions {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdown li:hover {
+  background-color: #f0f0f0;
+
+  /* Hover effect */
+}
+
+/* Glassmorphism & Liquid Background Sync */
+.glass-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #FFE6BA;
+}
+
+.glass-card {
+  position: relative;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px) saturate(160%);
+  -webkit-backdrop-filter: blur(15px) saturate(160%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  padding: 30px;
+}
+
+
+.bg-blobs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  filter: blur(100px);
+  border-radius: 50%;
+  animation: blob-move 20s infinite alternate ease-in-out;
+  opacity: 0.4;
+}
+
+.blob-1 {
+  width: 600px;
+  height: 600px;
+  background: #FF97A4;
+  top: -200px;
+  right: -100px;
+}
+
+.blob-2 {
+  width: 500px;
+  height: 500px;
+  background: #211C46;
+  bottom: -150px;
+  left: -100px;
+  animation-duration: 25s;
+  animation-delay: -5s;
+}
+
+.blob-3 {
+  width: 450px;
+  height: 450px;
+  background: #fdf2e3;
+  top: 30%;
+  left: 20%;
+  animation-duration: 30s;
+  animation-delay: -10s;
+  opacity: 0.8;
+}
+
+@keyframes blob-move {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+
+  33% {
+    transform: translate(60px, -80px) scale(1.2) rotate(10deg);
+  }
+
+  66% {
+    transform: translate(-40px, 40px) scale(0.8) rotate(-10deg);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+/* Mobile Responsiveness & Overflow Fixes */
+@media screen and (max-width: 600px) {
+
+  .search-container,
+  .search {
+    width: 90vw !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .content {
+    width: fit-content !important;
+    font-size: 1.2rem !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .logo-image {
+    width: 30% !important;
+  }
+
+  .small3-button,
+  .small4-button {
+    top: 15vh !important;
+    left: 10vw !important;
+  }
+
+  .small4-button {
+    left: 55vw !important;
+  }
+
+  .small-but {
+    width: 35vw !important;
+  }
+
+  .menu-btn {
+    font-size: 1.2rem !important;
+  }
+}
+
+/* Lesson View Styles */
+.lesson-view-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Changed from height to min-height to allow scrolling */
+  padding: 20px;
+  padding-top: 80px;
+  /* Add top padding to avoid navigation menu overlap */
+  box-sizing: border-box;
+  z-index: 10;
+  position: relative;
+  gap: 20px;
+}
+
+.lesson-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 15px 25px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.back-btn {
+  background: #211C46;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #FF97A4;
+  transform: translateX(-5px);
+}
+
+.lesson-main {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 20px;
+  min-height: calc(100vh - 120px);
+  /* Changed from height to min-height to allow content to expand */
+}
+
+.video-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  /* Add padding to create space for practice button */
+}
+
+.video-container {
+  flex-grow: 1;
+  max-height: 60vh;
+  /* Limit video height to 60% of viewport to leave room for practice button */
+  background: #000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.video-info {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lesson-list-card {
+  max-height: 70vh;
+  /* Limit height to 70% of viewport */
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important;
+  /* Override default glass-card padding */
+  overflow: hidden;
+}
+
+.lesson-list-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lesson-list-items {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* Custom scrollbar for lesson list */
+.lesson-list-items::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lesson-list-items::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.lesson-list-items::-webkit-scrollbar-thumb {
+  background: rgba(33, 28, 70, 0.3);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.lesson-list-items::-webkit-scrollbar-thumb:hover {
+  background: rgba(33, 28, 70, 0.5);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.lesson-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid transparent;
+}
+
+.lesson-item:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.02);
+}
+
+.lesson-item.active {
+  background: #211C46;
+  color: white;
+  box-shadow: 0 4px 15px rgba(33, 28, 70, 0.3);
+}
+
+.lesson-item.active .status-icon {
+  color: #FF97A4;
+}
+
+.status-icon {
+  font-size: 20px;
+  color: rgba(33, 28, 70, 0.5);
+}
+
+@media screen and (max-width: 1024px) {
+  .lesson-main {
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .lesson-view-container {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .video-container {
+    aspect-ratio: 16/9;
+  }
+
+  .lesson-list-card {
+    max-height: 500px;
+  }
+}

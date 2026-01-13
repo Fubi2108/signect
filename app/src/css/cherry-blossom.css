@@ -1,0 +1,90 @@
+/* Cherry Blossom Falling Animation */
+.cherry-blossom-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    overflow: hidden;
+}
+
+.cherry-petal {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: radial-gradient(circle at 30% 30%, #ffb7d5, #ff9ec8);
+    border-radius: 50% 0 50% 0;
+    opacity: 0.8;
+    animation: fall linear infinite, sway ease-in-out infinite, rotate linear infinite;
+    filter: drop-shadow(0 2px 4px rgba(255, 182, 213, 0.3));
+}
+
+/* Falling animation */
+@keyframes fall {
+    0% {
+        top: -20%;
+    }
+
+    100% {
+        top: 110%;
+    }
+}
+
+/* Swaying side to side */
+@keyframes sway {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(30px);
+    }
+
+    75% {
+        transform: translateX(-30px);
+    }
+}
+
+/* Rotating animation */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Different sizes for variety */
+.cherry-petal.small {
+    width: 10px;
+    height: 10px;
+}
+
+.cherry-petal.medium {
+    width: 15px;
+    height: 15px;
+}
+
+.cherry-petal.large {
+    width: 20px;
+    height: 20px;
+}
+
+/* Color variations */
+.cherry-petal.pink {
+    background: radial-gradient(circle at 30% 30%, #ffb7d5, #ff9ec8);
+}
+
+.cherry-petal.light-pink {
+    background: radial-gradient(circle at 30% 30%, #ffd4e5, #ffb7d5);
+}
+
+.cherry-petal.white-pink {
+    background: radial-gradient(circle at 30% 30%, #fff0f5, #ffd4e5);
+}

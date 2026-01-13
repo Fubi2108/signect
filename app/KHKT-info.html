@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="title"> </title>
+  <link href="src/css/styles.css" rel="stylesheet" />
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+  </style>
+</head>
+
+<body class="fade-in">
+  <script src="src/js/word.js" defer></script>
+
+  <div class="first_page">
+
+    <!-- mấy cái menu nè -->
+    <div class="menu" style="position: absolute;">
+      <button class="menu-btn" onclick='window.location.href="KHKT-mainpage.html"'>Home</button>
+
+      <button class="menu-btn" onclick="window.location.href='KHKT-course.html'">Course</button>
+
+      <button class="menu-btn" onclick="window.location.href='KHKT-AboutUs.html'">About us</button>
+    </div>
+
+  </div>
+
+  <div id="div" style="text-align: center; margin-top: 10vh;">
+    <h2 id="Name" style="color: #211C46; font-family: 'Lexend', sans-serif;"></h2>
+    <video id="Ref" autoplay controls
+      style="max-width: 80%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"></video>
+  </div>
+
+</body>
+
+</html>

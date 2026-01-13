@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About us</title>
+  <link href="src/css/styles.css" rel="stylesheet" />
+  <link href="src/css/auth-modal.css" rel="stylesheet" />
+  <link href="src/css/cherry-blossom.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap">
+</head>
+
+<body>
+  <div class="first_page fade-in">
+    <!-- Background Objects for Liquid Effect -->
+    <div class="bg-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Menu gốc -->
+    <div class="menu">
+      <button class="menu-btn" onclick='window.location.href="KHKT-mainpage.html"'>Home</button>
+      <button class="menu-btn" onclick="window.location.href='KHKT-course.html'">Course</button>
+      <button class="menu-btn" onclick="window.location.href='KHKT-AboutUs.html'">About us</button>
+    </div>
+
+    <!-- Layout mới cho About Us với hiệu ứng Glassmorphism -->
+    <div class="glass-container">
+      <main class="glass-card fade-in" style="animation-delay: 0.3s;">
+        <p>
+          Đây là câu chuyện về <strong>2 đóa hoa của vườn Thoại</strong>, với đam mê về ngôn ngữ và công nghệ, 2 đóa hoa
+          ấy đã cùng nhau tạo ra trang web học thủ ngữ cơ bản này. Dự án này đã được chúng em tâm huyết xây dựng trong
+          suốt ba tháng qua, và chúng em mong muốn giúp cộng đồng có thể tiếp cận ngôn ngữ ký hiệu một cách dễ dàng hơn.
+        </p>
+
+        <h3> Định hướng của chúng mình </h3>
+        <p> Mục tiêu của chúng em là giúp mọi người, đặc biệt là những người chưa quen thuộc với ngôn ngữ ký hiệu, có
+          thể học và sử dụng nó một cách nhanh chóng và hiệu quả. Chúng em tin rằng ngôn ngữ ký hiệu không chỉ là phương
+          tiện giao tiếp mà còn là cầu nối giúp tăng cường sự gắn kết trong xã hội này.</p>
+
+        <img src="image/aboutus.jpg" alt="Hành trình của chúng mình" class="about-img-modern" />
+
+        <h3> Hành trình phát triển </h3>
+        <p>Trong ba tháng phát triển, chúng em đã không ngừng cải thiện giao diện và tính năng của trang web để mang lại
+          trải nghiệm tốt nhất cho người dùng. Mỗi phần đều được chúng em nghiên cứu tỉ mỉ để đảm bảo trang web vừa dễ
+          sử dụng, vừa chuyên nghiệp.</p>
+
+        <h3> Trong tương lai </h3>
+        <p>Chúng em sẽ tiếp tục nâng cấp nội dung và tính năng của trang web để phục vụ cộng đồng tốt hơn, cũng như cung
+          cấp nhiều tài liệu học tập hơn. Những góp ý từ các thầy cô, bạn bè, người thân chính là nguồn động lực lớn
+          giúp chúng em hoàn thiện dự án này! </p>
+      </main>
+    </div>
+  </div>
+
+  <!-- Sign In Button -->
+  <button id="sign-in-btn" onclick="showAuthModal()">Sign In</button>
+
+  <!-- Authentication Modal -->
+  <div id="auth-modal">
+    <div class="auth-modal-content">
+      <span class="auth-close" onclick="closeAuthModal()">&times;</span>
+
+      <div class="auth-tabs">
+        <button id="signin-tab" class="auth-tab active" onclick="switchTab('signin')">Sign In</button>
+        <button id="signup-tab" class="auth-tab" onclick="switchTab('signup')">Sign Up</button>
+      </div>
+
+      <!-- Sign In Form -->
+      <form id="signin-form" class="auth-form active" onsubmit="handleSignIn(event)">
+        <div class="form-group">
+          <label for="signin-username">Username hoặc Email</label>
+          <input type="text" id="signin-username" placeholder="Nhập username hoặc email" required>
+        </div>
+        <div class="form-group">
+          <label for="signin-password">Password</label>
+          <input type="password" id="signin-password" placeholder="Nhập mật khẩu" required>
+        </div>
+        <button type="submit" class="auth-submit-btn">Sign In</button>
+        <div id="signin-message" class="auth-message"></div>
+      </form>
+
+      <!-- Sign Up Form -->
+      <form id="signup-form" class="auth-form" onsubmit="handleSignUp(event)">
+        <div class="form-group">
+          <label for="signup-username">Username</label>
+          <input type="text" id="signup-username" placeholder="Chọn username" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" placeholder="Nhập email" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" placeholder="Tạo mật khẩu (tối thiểu 6 ký tự)" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-confirm-password">Xác nhận Password</label>
+          <input type="password" id="signup-confirm-password" placeholder="Nhập lại mật khẩu" required>
+        </div>
+        <button type="submit" class="auth-submit-btn">Sign Up</button>
+        <div id="signup-message" class="auth-message"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="src/js/auth.js"></script>
+  <script src="src/js/cherry-blossom.js"></script>
+</body>
+
+</html>

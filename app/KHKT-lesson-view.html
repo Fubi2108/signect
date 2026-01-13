@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson View</title>
+    <link href="src/css/styles2.css" rel="stylesheet" />
+    <link href="src/css/auth-modal.css" rel="stylesheet" />
+    <link href="src/css/cherry-blossom.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap">
+</head>
+
+<body class="glass-container">
+    <!-- Background Objects for Liquid Effect -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav
+        style="position: fixed; top: 20px; left: 20px; z-index: 1000; display: flex; gap: 15px; font-family: 'Lexend', sans-serif;">
+        <a href="KHKT-mainpage.html"
+            style="text-decoration: none; color: #211C46; font-weight: 500; padding: 8px 16px; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-radius: 20px; transition: all 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"
+            onmouseover="this.style.background='rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-2px)';"
+            onmouseout="this.style.background='rgba(255, 255, 255, 0.7)'; this.style.transform='translateY(0)';">Home</a>
+        <a href="KHKT-course.html"
+            style="text-decoration: none; color: #211C46; font-weight: 500; padding: 8px 16px; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-radius: 20px; transition: all 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"
+            onmouseover="this.style.background='rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-2px)';"
+            onmouseout="this.style.background='rgba(255, 255, 255, 0.7)'; this.style.transform='translateY(0)';">Course</a>
+        <a href="KHKT-AboutUs.html"
+            style="text-decoration: none; color: #211C46; font-weight: 500; padding: 8px 16px; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-radius: 20px; transition: all 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"
+            onmouseover="this.style.background='rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-2px)';"
+            onmouseout="this.style.background='rgba(255, 255, 255, 0.7)'; this.style.transform='translateY(0)';">About
+            us</a>
+    </nav>
+
+    <div class="lesson-view-container">
+        <!-- Header Section -->
+        <header class="lesson-header">
+            <button class="back-btn" onclick="window.history.back()">
+                <span class="material-symbols-outlined">arrow_back</span> Quay lại
+            </button>
+            <h1 id="topic-title"
+                style="margin: 0; font-family: 'Lexend', sans-serif; color: #211C46; font-size: 1.5rem; flex-grow: 1;">
+                Đang tải chủ
+                đề...</h1>
+            <!-- Progress Circle -->
+            <div id="progress-circle-container" style="margin: 0 20px;"></div>
+            <button id="next-topic-btn" onclick="goToNextTopic()"
+                style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-family: 'Lexend'; font-weight: bold; display: flex; align-items: center; gap: 5px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);"
+                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)';"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)';">
+                Chủ đề kế tiếp <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="lesson-main">
+            <!-- Video Section -->
+            <section class="video-section glass-card">
+                <div class="video-container">
+                    <video id="main-video" controls autoplay>
+                        <source src="" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ video.
+                    </video>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 0 20px;">
+                    <h2 id="lesson-name" style="margin: 0; color: #211C46; font-size: 1.25rem;">Tên bài học</h2>
+                    <button onclick="goToPractice()"
+                        style="background: #FF97A4; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-family: 'Lexend'; font-weight: bold; display: flex; align-items: center; gap: 5px; transition: transform 0.2s;">
+                        <span class="material-symbols-outlined">school</span> Luyện tập
+                    </button>
+                </div>
+
+                <script>
+                    function goToPractice() {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const topicId = urlParams.get('topic') || '1';
+                        window.location.href = `KHKT-practice.html?topic=${topicId}`;
+                    }
+
+                    function goToNextTopic() {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const currentTopicId = parseInt(urlParams.get('topic') || '1');
+                        const nextTopicId = currentTopicId >= 4 ? 1 : currentTopicId + 1;
+                        window.location.href = `KHKT-lesson-view.html?topic=${nextTopicId}`;
+                    }
+
+                    // Update next topic button visibility on page load
+                    window.addEventListener('DOMContentLoaded', () => {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const currentTopicId = parseInt(urlParams.get('topic') || '1');
+                        const nextBtn = document.getElementById('next-topic-btn');
+
+                        // Update button text based on current topic
+                        if (currentTopicId >= 4) {
+                            nextBtn.innerHTML = 'Về chủ đề đầu <span class="material-symbols-outlined">restart_alt</span>';
+                        }
+                    });
+                </script>
+            </section>
+
+            <!-- Sidebar Section -->
+            <aside class="sidebar-section">
+                <div class="lesson-list-card glass-card">
+                    <div class="lesson-list-header">
+                        <h3 style="margin: 0; color: #211C46; display: flex; align-items: center; gap: 10px;">
+                            <span class="material-symbols-outlined">format_list_bulleted</span> Danh sách bài học
+                        </h3>
+                    </div>
+                    <div class="lesson-list-items" id="lesson-list">
+                        <!-- Lesson items will be injected here -->
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Sign In Button -->
+    <button id="sign-in-btn" onclick="showAuthModal()">Sign In</button>
+
+    <!-- Authentication Modal -->
+    <div id="auth-modal">
+        <div class="auth-modal-content">
+            <span class="auth-close" onclick="closeAuthModal()">&times;</span>
+
+            <div class="auth-tabs">
+                <button id="signin-tab" class="auth-tab active" onclick="switchTab('signin')">Sign In</button>
+                <button id="signup-tab" class="auth-tab" onclick="switchTab('signup')">Sign Up</button>
+            </div>
+
+            <!-- Sign In Form -->
+            <form id="signin-form" class="auth-form active" onsubmit="handleSignIn(event)">
+                <div class="form-group">
+                    <label for="signin-username">Username hoặc Email</label>
+                    <input type="text" id="signin-username" placeholder="Nhập username hoặc email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signin-password">Password</label>
+                    <input type="password" id="signin-password" placeholder="Nhập mật khẩu" required>
+                </div>
+                <button type="submit" class="auth-submit-btn">Sign In</button>
+                <div id="signin-message" class="auth-message"></div>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form id="signup-form" class="auth-form" onsubmit="handleSignUp(event)">
+                <div class="form-group">
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" placeholder="Chọn username" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Nhập email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Tạo mật khẩu (tối thiểu 6 ký tự)" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm-password">Xác nhận Password</label>
+                    <input type="password" id="signup-confirm-password" placeholder="Nhập lại mật khẩu" required>
+                </div>
+                <button type="submit" class="auth-submit-btn">Sign Up</button>
+                <div id="signup-message" class="auth-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="src/js/auth.js"></script>
+    <script src="src/js/progress.js"></script>
+    <script src="src/js/lesson-view.js"></script>
+    <script src="src/js/cherry-blossom.js"></script>
+</body>
+
+</html>

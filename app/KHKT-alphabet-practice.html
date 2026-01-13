@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luyện tập Bảng chữ cái</title>
+    <link href="src/css/styles2.css" rel="stylesheet" />
+    <link href="src/css/auth-modal.css" rel="stylesheet" />
+    <link href="src/css/cherry-blossom.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap">
+    <style>
+        .flashcard-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            padding: 40px 20px;
+        }
+
+        .flashcard {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 50px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            text-align: center;
+        }
+
+        .question-text {
+            font-family: 'Lexend', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #211C46;
+            margin-bottom: 30px;
+        }
+
+        .alphabet-display {
+            font-size: 120px;
+            font-weight: 700;
+            color: #667eea;
+            margin: 30px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .option-btn {
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #211C46;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option-btn:hover {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
+
+        .option-btn.correct {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .option-btn.wrong {
+            background: #f44336;
+            color: white;
+            border-color: #f44336;
+        }
+
+        .option-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .feedback {
+            margin-top: 30px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            min-height: 30px;
+        }
+
+        .feedback.correct {
+            color: #4CAF50;
+        }
+
+        .feedback.wrong {
+            color: #f44336;
+        }
+
+        .next-btn {
+            margin-top: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            display: none;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .score-display {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #211C46;
+            margin-bottom: 20px;
+        }
+
+        .completion-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .completion-screen h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .completion-screen .final-score {
+            font-size: 48px;
+            font-weight: 700;
+            color: #4CAF50;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+
+<body class="glass-container">
+    <!-- Background Objects for Liquid Effect -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav
+        style="position: fixed; top: 20px; left: 20px; z-index: 1000; display: flex; gap: 15px; font-family: 'Lexend', sans-serif;">
+        <a href="KHKT-course-alphabet.html"
+            style="text-decoration: none; color: #211C46; font-weight: 500; padding: 8px 16px; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-radius: 20px; transition: all 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"
+            onmouseover="this.style.background='rgba(255, 255, 255, 0.9)'; this.style.transform='translateY(-2px)';"
+            onmouseout="this.style.background='rgba(255, 255, 255, 0.7)'; this.style.transform='translateY(0)';">
+            <span class="material-symbols-outlined" style="vertical-align: middle;">arrow_back</span> Quay lại
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="flashcard-container">
+        <div class="flashcard">
+            <div class="score-display">
+                Câu <span id="current-question">1</span> / <span id="total-questions">26</span> |
+                Điểm: <span id="score">0</span>
+            </div>
+
+            <div id="quiz-content">
+                <div class="question-text">Chữ cái nào trong bảng chữ cái thủ ngữ?</div>
+                <div class="alphabet-display" id="alphabet-letter">A</div>
+
+                <div class="options-grid" id="options-container">
+                    <!-- Options will be inserted here by JavaScript -->
+                </div>
+
+                <div class="feedback" id="feedback"></div>
+                <button class="next-btn" id="next-btn" onclick="nextQuestion()">Câu tiếp theo</button>
+            </div>
+
+            <div class="completion-screen" id="completion-screen">
+                <h2>🎉 Hoàn thành!</h2>
+                <div class="final-score">
+                    <span id="final-score">0</span> / <span id="final-total">26</span>
+                </div>
+                <p style="font-family: 'Lexend', sans-serif; font-size: 18px; color: #211C46; margin: 20px 0;">
+                    Bạn đã trả lời đúng <span id="percentage">0</span>% câu hỏi!
+                </p>
+                <button class="next-btn" style="display: inline-block;" onclick="restartQuiz()">Làm lại</button>
+                <button class="next-btn" style="display: inline-block; margin-left: 10px;"
+                    onclick="window.location.href='KHKT-course-alphabet.html'">Về bảng chữ cái</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign In Button -->
+    <button id="sign-in-btn" onclick="showAuthModal()">Sign In</button>
+
+    <!-- Authentication Modal -->
+    <div id="auth-modal">
+        <div class="auth-modal-content">
+            <span class="auth-close" onclick="closeAuthModal()">&times;</span>
+
+            <div class="auth-tabs">
+                <button id="signin-tab" class="auth-tab active" onclick="switchTab('signin')">Sign In</button>
+                <button id="signup-tab" class="auth-tab" onclick="switchTab('signup')">Sign Up</button>
+            </div>
+
+            <!-- Sign In Form -->
+            <form id="signin-form" class="auth-form active" onsubmit="handleSignIn(event)">
+                <div class="form-group">
+                    <label for="signin-username">Username hoặc Email</label>
+                    <input type="text" id="signin-username" placeholder="Nhập username hoặc email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signin-password">Password</label>
+                    <input type="password" id="signin-password" placeholder="Nhập mật khẩu" required>
+                </div>
+                <button type="submit" class="auth-submit-btn">Sign In</button>
+                <div id="signin-message" class="auth-message"></div>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form id="signup-form" class="auth-form" onsubmit="handleSignUp(event)">
+                <div class="form-group">
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" placeholder="Chọn username" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Nhập email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Tạo mật khẩu (tối thiểu 6 ký tự)" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm-password">Xác nhận Password</label>
+                    <input type="password" id="signup-confirm-password" placeholder="Nhập lại mật khẩu" required>
+                </div>
+                <button type="submit" class="auth-submit-btn">Sign Up</button>
+                <div id="signup-message" class="auth-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="src/js/auth.js"></script>
+    <script src="src/js/cherry-blossom.js"></script>
+    <script src="src/js/alphabet-practice.js"></script>
+</body>
+
+</html>
