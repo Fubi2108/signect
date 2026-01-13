@@ -99,7 +99,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background-image: url(image/myweb.png);
+  background-image: url(../../public/image/myweb.png);
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: top;

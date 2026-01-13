@@ -51,7 +51,7 @@ body {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-image: url(myweb.png);
+  background-image: url(../../public/image/myweb.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top;
