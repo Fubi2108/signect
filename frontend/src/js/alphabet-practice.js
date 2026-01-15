@@ -1,7 +1,9 @@
 // Alphabet Practice Quiz
 class AlphabetQuiz {
     constructor() {
-        this.alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        // Updated alphabet based on available images in public/image/alphabet_prac/
+        // Available: A, B, C, D, E, G, H, I, K, L, M, N, P, Q, R, S, T, U, V, X, Y, Đ
+        this.alphabet = ['A', 'B', 'C', 'D', 'E', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Đ'];
         this.questions = [];
         this.currentQuestionIndex = 0;
         this.score = 0;
@@ -34,8 +36,10 @@ class AlphabetQuiz {
     displayQuestion() {
         const currentLetter = this.questions[this.currentQuestionIndex];
 
-        // Update letter display
-        document.getElementById('alphabet-letter').textContent = currentLetter;
+        // Update image display
+        const imgElement = document.getElementById('alphabet-image');
+        imgElement.src = `public/image/alphabet_prac/${currentLetter}.png`;
+        imgElement.alt = `Hand sign for letter ${currentLetter}`;
 
         // Update question counter
         document.getElementById('current-question').textContent = this.currentQuestionIndex + 1;
@@ -61,6 +65,11 @@ class AlphabetQuiz {
         document.getElementById('feedback').textContent = '';
         document.getElementById('feedback').className = 'feedback';
         document.getElementById('next-btn').style.display = 'none';
+
+        // Reset image animation if any (optional)
+        imgElement.style.animation = 'none';
+        imgElement.offsetHeight; /* trigger reflow */
+        imgElement.style.animation = null;
     }
 
     generateOptions(correctAnswer) {
@@ -84,6 +93,8 @@ class AlphabetQuiz {
         this.answered = true;
         const feedback = document.getElementById('feedback');
         const allButtons = document.querySelectorAll('.option-btn');
+        const correctSound = document.getElementById('sound-correct');
+        const wrongSound = document.getElementById('sound-wrong');
 
         // Disable all buttons
         allButtons.forEach(btn => btn.disabled = true);
@@ -95,22 +106,78 @@ class AlphabetQuiz {
             feedback.className = 'feedback correct';
             this.score++;
             document.getElementById('score').textContent = this.score;
+
+            // Play correct sound
+            if (correctSound) {
+                correctSound.currentTime = 0;
+                correctSound.play().catch(e => console.log('Audio play failed:', e));
+            }
+
+            // Trigger confetti
+            this.triggerConfetti();
+
         } else {
             // Wrong answer
             button.classList.add('wrong');
-            feedback.textContent = `✗ Sai rồi! Đáp án đúng là: ${correctAnswer}`;
+            feedback.textContent = `✗ Sai mất rồi! Đáp án đúng là: ${correctAnswer}`;
             feedback.className = 'feedback wrong';
+
+            // Play wrong sound
+            if (wrongSound) {
+                wrongSound.currentTime = 0;
+                wrongSound.play().catch(e => console.log('Audio play failed:', e));
+            }
 
             // Highlight correct answer
             allButtons.forEach(btn => {
                 if (btn.textContent === correctAnswer) {
                     btn.classList.add('correct');
+                    // Add checkmark to correct answer as requested
+                    const checkMark = document.createElement('span');
+                    checkMark.textContent = ' ✓';
+                    btn.appendChild(checkMark);
                 }
             });
         }
 
         // Show next button
         document.getElementById('next-btn').style.display = 'inline-block';
+    }
+
+    triggerConfetti() {
+        // Check if confetti lib is loaded
+        if (typeof confetti === 'function') {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#667eea', '#764ba2', '#ffeb3b', '#ff4081']
+            });
+
+            // Fire from sides as requested
+            var end = Date.now() + (1 * 1000);
+
+            (function frame() {
+                confetti({
+                    particleCount: 2,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#667eea', '#764ba2']
+                });
+                confetti({
+                    particleCount: 2,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#667eea', '#764ba2']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
     }
 
     nextQuestion() {
@@ -162,3 +229,33 @@ function nextQuestion() {
 function restartQuiz() {
     quiz.restart();
 }
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+    // Number keys 1-4
+    if (['1', '2', '3', '4'].includes(e.key)) {
+        const index = parseInt(e.key) - 1;
+        const buttons = document.querySelectorAll('.option-btn');
+        if (buttons[index] && !buttons[index].disabled) {
+            buttons[index].click();
+        }
+    }
+
+    // Enter key
+    if (e.key === 'Enter') {
+        const nextBtn = document.getElementById('next-btn');
+        const completionScreen = document.getElementById('completion-screen');
+
+        // If next button is visible, click it
+        if (nextBtn && nextBtn.style.display !== 'none' && nextBtn.offsetParent !== null) {
+            nextBtn.click();
+        }
+        // If completion screen is visible/active? Actually nextBtn is inside quiz-content which is hidden on completion.
+        // But for completion screen buttons, maybe just focus specific ones? 
+        // The user said "Enter to next question", let's stick to that primarily.
+        // Usually user might want to restart with Enter if finished
+        else if (completionScreen && completionScreen.style.display !== 'none') {
+            restartQuiz();
+        }
+    }
+});

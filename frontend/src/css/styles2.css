@@ -83,26 +83,7 @@ body {
   background-clip: content-box;
 }
 
-.search {
-  --padding: 14px;
-  width: 50vw;
-  display: flex;
-  align-items: center;
-  padding: var(--padding);
-  border-radius: 50px;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.search:hover {
-  background: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
-}
+/* Removed duplicate .search block */
 
 .search-input {
   font-size: 16px;
@@ -249,124 +230,158 @@ body {
 
 .search-container {
   position: absolute;
-  top: 2vh;
+  top: 3vh;
   left: 50%;
   transform: translateX(-50%);
   width: 50vw;
-  max-width: 90%;
-  z-index: 20;
+  max-width: 600px;
+  z-index: 2000;
 }
 
 .search {
   display: flex;
   align-items: center;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  padding: 5px 15px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
+  padding: 12px 25px;
   width: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* Optional: subtle shadow */
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.search:hover,
+.search:focus-within {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.15);
+  transform: translateY(-2px) scale(1.01);
+  border-color: #fff;
 }
 
 .search-icon {
-  margin-right: 10px;
-  color: #aaa;
-  /* Optional: color of the search icon */
+  margin-right: 15px;
+  color: #211C46;
+  font-size: 24px;
+  opacity: 0.7;
 }
 
 .search-input {
   border: none;
   outline: none;
   width: 100%;
-  font-size: 16px;
+  font-size: 1.1rem;
+  font-family: 'Lexend', sans-serif;
+  color: #211C46;
+  background: transparent;
+  font-weight: 500;
+}
+
+.search-input::placeholder {
+  color: rgba(33, 28, 70, 0.5);
+  font-weight: 400;
 }
 
 .suggestions {
   list-style-type: none;
-  padding-left: 0;
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  /* Matches the search bar border */
-  border-radius: 8px;
-  /* Rounded corners for the suggestions box */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow for pop-up effect */
+  padding: 0;
+  margin: 15px 0 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   width: 100%;
-  /* Aligns the suggestion box width to the search bar */
-  max-height: 200px;
-  /* Optional: limit height and make it scrollable */
+  max-height: 60vh;
   overflow-y: auto;
-  /* Adds a scrollbar if there are too many suggestions */
-  background-color: white;
-  /* Matches the background of the search bar */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
   position: absolute;
-  /* Ensures it appears below the search bar */
-  z-index: 10;
-  /* Make sure it stays above other content */
+  top: 100%;
+  z-index: 1000;
+  display: none;
+  animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .suggestions li {
-  padding: 10px;
+  padding: 15px 25px;
   margin: 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(33, 28, 70, 0.05);
   cursor: pointer;
-  font-size: 16px;
-}
-
-.suggestions li:hover {
-  background-color: #f0f0f0;
+  font-size: 1rem;
+  color: #211C46;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
 }
 
 .suggestions li:last-child {
   border-bottom: none;
-  /* Removes the border from the last item */
 }
 
-#res_list li {
-  padding: 10px;
-  /* Space inside each list item */
-  cursor: pointer;
-  /* Change cursor to pointer to indicate it's clickable */
-  transition: background-color 0.2s;
-  /* Smooth transitions for hover effects */
+.suggestion-item:hover {
+  background-color: #fcecef;
+  /* Very light pink */
+  color: #FF97A4;
+  padding-left: 30px;
+  font-weight: 600;
 }
 
-#res_list li:hover {
-  background-color: #cbe4f4;
-  /* Change background color on hover */
+.suggestion-item:before {
+  content: '▸';
+  opacity: 0;
+  margin-right: 10px;
+  transition: opacity 0.2s ease;
+  color: #FF97A4;
 }
 
-.dropdown {
-  display: none;
-  /* Initially hidden */
-  position: absolute;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  /* Ensure it stays above other content */
-  width: 100%;
-  /* Match the button width */
+.suggestion-item:hover:before {
+  opacity: 1;
 }
 
-.dropdown .suggestions {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.no-result-item {
+  color: #666;
+  font-style: italic;
+  cursor: default !important;
+  text-align: center;
+  padding: 25px !important;
+  display: block !important;
 }
 
-.dropdown li {
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+.no-result-item:hover {
+  background: transparent !important;
+  padding-left: 25px !important;
+  /* Prevent movement */
 }
 
-.dropdown li:hover {
-  background-color: #f0f0f0;
+/* Scrollbar for suggestions */
+.suggestions::-webkit-scrollbar {
+  width: 8px;
+}
 
-  /* Hover effect */
+.suggestions::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 10px 0;
+}
+
+.suggestions::-webkit-scrollbar-thumb {
+  background: rgba(33, 28, 70, 0.1);
+  border-radius: 10px;
+}
+
+.suggestions::-webkit-scrollbar-thumb:hover {
+  background: rgba(33, 28, 70, 0.3);
 }
 
 /* Glassmorphism & Liquid Background Sync */

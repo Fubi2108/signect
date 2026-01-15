@@ -1,51 +1,46 @@
 [
     {
-        "name":"topic",
-        "ref":"0"
+        "name": "topic",
+        "ref": "0"
     },
-
     {
-        "name":"chào",
-        "ref": "lessons/topic_1_ref/chao.mp4"
+        "name": "Chào",
+        "ref": "public/lessons/topic_1_ref/Chào.mp4"
     },
-
     {
-        "name":"gặp",
-        "ref": "lessons/topic_1_ref/gap.mp4"
+        "name": "Cảm ơn",
+        "ref": "public/lessons/topic_1_ref/Cảm ơn.mp4"
     },
-
     {
-        "name": "hẹn gặp lại",
-        "ref": "lessons/topic_1_ref/hengaplai.mp4"
+        "name": "Gặp",
+        "ref": "public/lessons/topic_1_ref/Gặp.mp4"
     },
-
     {
-        "name": "sống",
-        "ref": "lessons/topic_1_ref/song.mp4"
+        "name": "Hẹn gặp lại",
+        "ref": "public/lessons/topic_1_ref/Hẹn gặp lại.mp4"
     },
-
     {
-        "name": "tạm biệt",
-        "ref": "lessons/topic_1_ref/tambiet.mp4"
+        "name": "Tôi sống ở...",
+        "ref": "public/lessons/topic_1_ref/Tôi sống ở... .mp4"
     },
-
     {
-        "name": "tên",
-        "ref": "lessons/topic_1_ref/ten.mp4"
+        "name": "Tạm biệt",
+        "ref": "public/lessons/topic_1_ref/Tạm biệt.mp4"
     },
-
     {
-        "name": "tuổi",
-        "ref": "lessons/topic_1_ref/tuoi.mp4"
+        "name": "Tôi tên ...",
+        "ref": "public/lessons/topic_1_ref/Tôi tên ... .mp4"
     },
-
     {
-        "name": "rất vui được gặp bạn",
-        "ref": "lessons/topic_1_ref/vuigapban.mp4"
+        "name": "Tuổi tôi là...",
+        "ref": "public/lessons/topic_1_ref/Tuổi tôi là... .mp4"
     },
-
     {
-        "name": "xin lỗi",
-        "ref": "lessons/topic_1_ref/xinloi.mp4"
+        "name": "Rất vui được gặp bạn",
+        "ref": "public/lessons/topic_1_ref/Rất vui được gặp bạn.mp4"
+    },
+    {
+        "name": "Xin lỗi",
+        "ref": "public/lessons/topic_1_ref/Xin lỗi.mp4"
     }
 ]

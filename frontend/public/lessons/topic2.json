@@ -1,41 +1,34 @@
 [
     {
-        "name":"topic",
-        "ref":"1"
+        "name": "topic",
+        "ref": "1"
     },
-
     {
-        "name":"cha",
-        "ref": "lessons/topic_2_ref/cha.mp4"
+        "name": "cha",
+        "ref": "public/lessons/topic_2_ref/cha.mp4"
     },
-
     {
-        "name":"con",
-        "ref": "lessons/topic_2_ref/com.mp4"
+        "name": "con",
+        "ref": "public/lessons/topic_2_ref/com.mp4"
     },
-
     {
         "name": "con gái",
-        "ref": "lessons/topic_2_ref/congai.mp4"
+        "ref": "public/lessons/topic_2_ref/congai.mp4"
     },
-
     {
         "name": "con trai",
-        "ref": "lessons/topic_2_ref/contrai.mp4"
+        "ref": "public/lessons/topic_2_ref/contrai.mp4"
     },
-
     {
         "name": "gia đình",
-        "ref": "lessons/topic_2_ref/giadinh.mp4"
+        "ref": "public/lessons/topic_2_ref/giadinh.mp4"
     },
-
     {
         "name": "mẹ",
-        "ref": "lessons/topic_2_ref/me.mp4"
+        "ref": "public/lessons/topic_2_ref/me.mp4"
     },
-
     {
         "name": "nhà",
-        "ref": "lessons/topic_2_ref/nha.mp4"
+        "ref": "public/lessons/topic_2_ref/nha.mp4"
     }
 ]

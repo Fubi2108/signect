@@ -45,7 +45,7 @@
     <div class="blob blob-3"></div>
   </div>
 
-  <div class="search-container" style="z-index: 20;">
+  <div class="search-container">
     <div class="search">
       <span class="search-icon material-symbols-outlined">search</span>
       <input class="search-input" type="search" id="searchbar" placeholder="Search">
@@ -63,11 +63,11 @@
     </div>
 
     <div class="small3-button" onclick='window.location.href="KHKT-course-alphabet.html"'>
-      <img src="image/node3.png" alt="Button" class="small-but" />
+      <img src="public/image/node3.png" alt="Button" class="small-but" />
     </div>
 
     <div class="small4-button" onclick='window.location.href="KHKT-course-topic.html"'>
-      <img src="image/node4.png" alt="Button" class="small-but" />
+      <img src="public/image/node4.png" alt="Button" class="small-but" />
     </div>
   </div>
 
@@ -80,22 +80,22 @@
   </div>
 
   <div class="alphabet glass-card"
-    style="padding: 20px; width: auto; max-width: 50%; right: calc(5vw - 50px); top: calc(28.3vh + 20px); left: 50vh; transform: none; display: flex; justify-content: center; align-items: center; height: auto;">
-    <img src="image/alpha.png" alt="Alphabet" class="alphabet-image"
+    style="padding: 20px; width: auto; max-width: 50%; right: calc(5vw - 50px); top: calc(28.3vh + 20px); left: 50vh; transform: none; display: flex; flex-direction: column; justify-content: center; align-items: center; height: auto;">
+    <img src="public/image/alpha.png" alt="Alphabet" class="alphabet-image"
       style="max-height: 110vh; width: auto; object-fit: contain;">
+
+    <!-- Practice Button -->
+    <button onclick="window.location.href='KHKT-alphabet-practice.html'"
+      style="margin-top: 20px; z-index: 10; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; font-family: 'Lexend', sans-serif; font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 10px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);"
+      onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)';"
+      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)';">
+      <span class="material-symbols-outlined">quiz</span>
+      Luyện tập
+    </button>
   </div>
 
-  <!-- Practice Button -->
-  <button onclick="window.location.href='KHKT-alphabet-practice.html'"
-    style="position: absolute; right: calc(5vw - 50px + 25%); top: calc(28.3vh + 20px + 75vh); transform: translateX(50%); z-index: 10; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; font-family: 'Lexend', sans-serif; font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 10px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);"
-    onmouseover="this.style.transform='translateX(50%) translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)';"
-    onmouseout="this.style.transform='translateX(50%) translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)';">
-    <span class="material-symbols-outlined">quiz</span>
-    Luyện tập
-  </button>
-
   <div class="logo" style="z-index: 5;">
-    <img src="image/logo.png" alt="logo" class="logo-image">
+    <img src="public/image/logo.png" alt="logo" class="logo-image">
   </div>
 
   <!-- Sign In Button -->

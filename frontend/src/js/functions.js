@@ -63,7 +63,7 @@ function keep_score() {
 function generate_question(my_file) {
     keep_score();
 
-    let file = "lessons/" + my_file;
+    let file = "public/lessons/" + my_file;
     fetch(file)
         .then(res => res.json())
         .then(res => {

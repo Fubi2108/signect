@@ -17,33 +17,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Embedded lesson data to avoid CORS issues
     const allLessons = {
         '1': [
-            { "name": "chào", "ref": "lessons/topic_1_ref/chao.mp4" },
-            { "name": "gặp", "ref": "lessons/topic_1_ref/gap.mp4" },
-            { "name": "hẹn gặp lại", "ref": "lessons/topic_1_ref/hengaplai.mp4" },
-            { "name": "sống", "ref": "lessons/topic_1_ref/song.mp4" },
-            { "name": "tạm biệt", "ref": "lessons/topic_1_ref/tambiet.mp4" },
-            { "name": "tên", "ref": "lessons/topic_1_ref/ten.mp4" },
-            { "name": "tuổi", "ref": "lessons/topic_1_ref/tuoi.mp4" },
-            { "name": "rất vui được gặp bạn", "ref": "lessons/topic_1_ref/vuigapban.mp4" },
-            { "name": "xin lỗi", "ref": "lessons/topic_1_ref/xinloi.mp4" }
+            { "name": "Chào", "ref": "public/lessons/topic_1_ref/Chào.mp4" },
+            { "name": "Cảm ơn", "ref": "public/lessons/topic_1_ref/Cảm ơn.mp4" },
+            { "name": "Gặp", "ref": "public/lessons/topic_1_ref/Gặp.mp4" },
+            { "name": "Hẹn gặp lại", "ref": "public/lessons/topic_1_ref/Hẹn gặp lại.mp4" },
+            { "name": "Tôi sống ở...", "ref": "public/lessons/topic_1_ref/Tôi sống ở... .mp4" },
+            { "name": "Tạm biệt", "ref": "public/lessons/topic_1_ref/Tạm biệt.mp4" },
+            { "name": "Tôi tên ...", "ref": "public/lessons/topic_1_ref/Tôi tên ... .mp4" },
+            { "name": "Tuổi tôi là...", "ref": "public/lessons/topic_1_ref/Tuổi tôi là... .mp4" },
+            { "name": "Rất vui được gặp bạn", "ref": "public/lessons/topic_1_ref/Rất vui được gặp bạn.mp4" },
+            { "name": "Xin lỗi", "ref": "public/lessons/topic_1_ref/Xin lỗi.mp4" }
         ],
         '2': [
-            { "name": "cha", "ref": "lessons/topic_2_ref/cha.mp4" },
-            { "name": "con", "ref": "lessons/topic_2_ref/com.mp4" },
-            { "name": "con gái", "ref": "lessons/topic_2_ref/congai.mp4" },
-            { "name": "con trai", "ref": "lessons/topic_2_ref/contrai.mp4" },
-            { "name": "gia đình", "ref": "lessons/topic_2_ref/giadinh.mp4" },
-            { "name": "mẹ", "ref": "lessons/topic_2_ref/me.mp4" },
-            { "name": "nhà", "ref": "lessons/topic_2_ref/nha.mp4" }
+            { "name": "cha", "ref": "public/lessons/topic_2_ref/cha.mp4" },
+            { "name": "con", "ref": "public/lessons/topic_2_ref/com.mp4" },
+            { "name": "con gái", "ref": "public/lessons/topic_2_ref/congai.mp4" },
+            { "name": "con trai", "ref": "public/lessons/topic_2_ref/contrai.mp4" },
+            { "name": "gia đình", "ref": "public/lessons/topic_2_ref/giadinh.mp4" },
+            { "name": "mẹ", "ref": "public/lessons/topic_2_ref/me.mp4" },
+            { "name": "nhà", "ref": "public/lessons/topic_2_ref/nha.mp4" }
         ],
         '3': [
-            { "name": "ăn", "ref": "lessons/topic_3_ref/an.mp4" },
-            { "name": "bánh mì", "ref": "lessons/topic_3_ref/banhmi.mp4" },
-            { "name": "khát nước", "ref": "lessons/topic_3_ref/khat.mp4" },
-            { "name": "nước", "ref": "lessons/topic_3_ref/nuoc.mp4" },
-            { "name": "súp", "ref": "lessons/topic_3_ref/sup.mp4" },
-            { "name": "trà", "ref": "lessons/topic_3_ref/tra.mp4" },
-            { "name": "uống", "ref": "lessons/topic_3_ref/uong.mp4" }
+            { "name": "ăn", "ref": "public/lessons/topic_3_ref/an.mp4" },
+            { "name": "bánh mì", "ref": "public/lessons/topic_3_ref/banhmi.mp4" },
+            { "name": "khát nước", "ref": "public/lessons/topic_3_ref/khat.mp4" },
+            { "name": "nước", "ref": "public/lessons/topic_3_ref/nuoc.mp4" },
+            { "name": "súp", "ref": "public/lessons/topic_3_ref/sup.mp4" },
+            { "name": "trà", "ref": "public/lessons/topic_3_ref/tra.mp4" },
+            { "name": "uống", "ref": "public/lessons/topic_3_ref/uong.mp4" }
         ],
         '4': []  // Topic 4 to be added later
     };
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentUser = authSystem ? authSystem.getCurrentUser() : null;
 
     if (lessons.length > 0) {
-        // Initialize progress tracking if user is logged in
+        // Initialize progress circle
         if (currentUser && progressTracker) {
             const percentage = progressTracker.getCompletionPercentage(currentUser.id, topicId);
             progressCircle = new ProgressCircle('progress-circle-container', percentage);
@@ -71,7 +72,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         renderLessonList(lessons);
-        loadLesson(lessons[0]);
+
+        // Check for 'video' parameter in URL to deep link
+        const videoParam = urlParams.get('video');
+        let initialLesson = lessons[0];
+
+        if (videoParam) {
+            // Decoding URI component just in case
+            const decodedName = decodeURIComponent(videoParam).toLowerCase();
+            const foundLesson = lessons.find(l => l.name.toLowerCase() === decodedName);
+            if (foundLesson) {
+                initialLesson = foundLesson;
+            }
+        }
+
+        loadLesson(initialLesson);
+
+        // Helper to highlight correct item on load
+        setTimeout(() => {
+            const currentIndex = lessons.findIndex(l => l.name === initialLesson.name);
+            const lessonItems = document.querySelectorAll('.lesson-item');
+            if (lessonItems[currentIndex]) {
+                updateActiveState(lessonItems[currentIndex]);
+            }
+        }, 100);
+
     } else {
         lessonListElement.innerHTML = '<p style="padding: 20px;">Chưa có bài học nào.</p>';
     }

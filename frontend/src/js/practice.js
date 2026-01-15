@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     topicTitleElement.innerText = topicNames[topicId] || `Chủ đề ${topicId}`;
 
     // Fetch data
-    fetch(`lessons/topic${topicId}.json`)
+    fetch(`public/lessons/topic${topicId}.json`)
         .then(res => res.json())
         .then(data => {
             // Filter out metadata if exists
